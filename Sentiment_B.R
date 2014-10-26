@@ -1,0 +1,11 @@
+library(tm)
+library(Rstem)
+library(sentiment)
+setwd("/Users/maruthi/Desktop/")
+data = read.csv("OneMillionCSVTweets.csv", header=TRUE, sep=",")
+data1 = as.vector(iconv(data$Tweet, "latin1", "UTF-8"))
+dataPolarity = classify_polarity(data1)
+dataSentiment = classify_sentiment(data1, algorithm="bayes")
+
+dfPolarity = as.data.frame(dataPolarity)
+dfSentiment = as.data.frame(dataSentiment)
